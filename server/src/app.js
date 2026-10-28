@@ -3,6 +3,8 @@ import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit,{ipKeyGenerator} from 'express-rate-limit';
 import {randomUUID} from 'node:crypto';
+import {dirname,resolve} from 'node:path';
+import {fileURLToPath} from 'node:url';
 import {generationRequestSchema,accusationRequestSchema,toPublicMystery} from '@mystery/shared';
 import {Mystery} from './models/Mystery.js';
 import {Attempt} from './models/Attempt.js';
@@ -12,6 +14,7 @@ import {demoMystery} from './data/demoMystery.js';
 
 export const app=express();
 app.disable('x-powered-by');app.use(helmet());
+if(process.env.NODE_ENV==='production')app.set('trust proxy',1);
 app.use(cors({origin:process.env.CLIENT_ORIGIN||'http://localhost:5173',credentials:true}));
 app.use(express.json({limit:'24kb'}));app.use(requestId,startLatency);
 const rateWindow=Number(process.env.RATE_LIMIT_WINDOW_MS||3600000);
@@ -38,4 +41,9 @@ app.post('/api/v1/mysteries/:id/accusations',async(req,res,next)=>{
  }catch(e){if(e.code===11000)return res.status(409).json({error:{code:'ATTEMPT_ALREADY_SUBMITTED',message:'An accusation has already been submitted for this case.',requestId:req.id}});next(e)}
 });
 app.get('/api/v1/mysteries/:id/result',async(req,res,next)=>{try{const sessionId=req.query.sessionId;if(typeof sessionId!=='string')return res.status(400).json({error:{code:'VALIDATION_ERROR',message:'A session ID is required.',requestId:req.id}});const attempt=await Attempt.findOne({mysteryId:req.params.id,sessionId});if(!attempt)return res.status(404).json({error:{code:'RESULT_NOT_FOUND',message:'No completed result was found for this session.',requestId:req.id}});const doc=await Mystery.findOne({mysteryId:req.params.id});if(!doc)return res.status(404).json({error:{code:'MYSTERY_NOT_FOUND',message:'This case could not be found.',requestId:req.id}});const culprit=doc.data.suspects.find(s=>s.id===doc.data.solution.culpritSuspectId);res.json({result:{attemptId:String(attempt._id),isCorrect:attempt.isCorrect,selectedSuspectId:attempt.selectedSuspectId,culprit:{id:culprit.id,name:culprit.name},solution:doc.data.solution,scenarioAnalysis:doc.data.scenarioAnalysis}})}catch(e){next(e)}});
+if(process.env.NODE_ENV==='production'){
+ const clientDist=resolve(dirname(fileURLToPath(import.meta.url)),'../../client/dist');
+ app.use(express.static(clientDist));
+ app.use((req,res,next)=>{if(req.method!=='GET'||req.path.startsWith('/api'))return next();res.sendFile(resolve(clientDist,'index.html'),error=>{if(error)next(error)})});
+}
 app.use(errorHandler);

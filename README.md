@@ -17,6 +17,10 @@ Run `npm run dev` to start the API on port 5000 and web client on port 5173. Ope
 
 Build the client with `npm run build`. Run automated checks with `npm test`. The API health endpoint is `GET /api/v1/health`.
 
+## Deployment
+
+Render deployment is configured in `render.yaml`. Follow [the Render deployment guide](docs/RENDER_DEPLOYMENT.md) to connect the Git repository, add secrets, and allow the service to reach MongoDB Atlas.
+
 ## Gemini and integrity
 
 Gemini uses the server-side `GEMINI_API_KEY` and configurable `GEMINI_MODEL` (default `gemini-3.8-flash`). Structured output is parsed and validated with Zod before persistence. Validation checks difficulty-specific suspect/evidence counts, unique IDs, culprit and clue references, supporting clues, timeline references, and report references. The service allows at most two generation attempts, with one repair prompt, and enforces a configurable timeout.
