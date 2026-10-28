@@ -1,0 +1,1 @@
+{"name":"@mystery/shared","version":"1.0.0","type":"module","exports":"./src/schemas.js","dependencies":{"zod":"^4.6.7"}}

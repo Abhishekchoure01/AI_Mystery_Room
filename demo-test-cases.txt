@@ -1,0 +1,23 @@
+AI MYSTERY ROOM — DEMO TEST CASES
+
+How to use: Open http://localhost:5173, choose the difficulty and case type shown, paste the matching premise, and click Generate case. Each premise is longer than the app's 30-character minimum. Generated details and solutions will vary between runs.
+
+1) THE MISSING SCORE — General · Easy
+
+During the final rehearsal at the fictional Bellweather Conservatory, the original handwritten score for the closing piece disappears from a locked music room. The room was open to four people that afternoon: the composer, a page-turner, the stage manager, and a visiting archivist. A window was left ajar after a brief rain shower, but the sill is dusty and undisturbed. The stage clock stopped at 4:20, while the rehearsal log says the score was used at 4:35. A fresh pencil mark appears on a photocopy, and each person remembers the last rehearsal differently. Find out what happened to the score and which details reveal the truth.
+
+2) THE BLUE HOUR BROOCH — Theft · Medium
+
+At a small exhibition in the fictional Marlowe Museum, a blue enamel brooch disappears from a display case during a ten-minute lights test. The case was opened for inspection shortly before the test, and four people were nearby: the curator, a lighting technician, a donor's assistant, and a gallery guide. The case alarm shows no forced entry. A printed maintenance ticket has a time that conflicts with the technician's notes, and a visitor sketch shows the brooch in a different position than the curator recalls. One person claims to have been in the courtyard, but a rain-damp coat and a dry umbrella complicate that account. Determine who took the brooch and how the timeline exposes the theft.
+
+3) LAST FERRY FROM NORTH PIER — Disappearance · Medium
+
+On a foggy evening in the fictional harbor town of Greyhaven, lighthouse keeper Rowan Vale misses the last ferry home and cannot be found at the pier or lighthouse the next morning. Rowan left behind a packed lunch, a tide chart with one unusual mark, and a lantern that was returned to the wrong shelf. Four people saw Rowan that night: a ferry operator, a harbor mechanic, a weather observer, and a night-shift baker. Their accounts disagree about when the fog thickened and which pier light was working. Nothing suggests an accident or a crime, but someone appears to have moved a public notice after the ferry departed. Piece together Rowan's route and determine where Rowan went.
+
+4) THE SILENT GREENHOUSE — Sabotage · Hard
+
+The rarest seedlings in the fictional Ashcombe Botanical Garden fail to bloom just before a public opening, even though the greenhouse records show their climate settings were correct. No plants were removed, and there is no lasting damage. Five people had access to the greenhouse control room: the head gardener, a sensor technician, a volunteer coordinator, a researcher, and a delivery driver. The automated log contains a short gap, a handwritten temperature note uses the wrong scale, and a delivery receipt was signed before the truck arrived. One suspect says the control panel was untouched all week. Compare the records, access times, and plant-care routines to determine who interfered with the greenhouse conditions and why.
+
+5) THE FINAL TOAST — Murder · Hard · non-graphic
+
+At a private dinner in the fictional Alderwick Observatory, astronomer Dr. Mira Sen is found dead after the guests leave the dining room. Keep the mystery non-graphic and entirely fictional. Five people were present: a research partner, a groundskeeper, a science journalist, a visiting donor, and the observatory chef. The doctor had announced a discovery earlier that evening, but the notes describing it are missing. A telescope was pointed away from the scheduled target, one place card had been moved, and the kitchen's serving log lists a drink that no guest remembers ordering. The wall clock is seven minutes slow, while the observatory's instrument log is synchronized. Use the conflicting timelines and room details to identify the culprit and explain the evidence without relying on graphic details.

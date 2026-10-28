@@ -1,0 +1,15 @@
+import {config} from 'dotenv';
+import {dirname,resolve} from 'node:path';
+import {fileURLToPath} from 'node:url';
+config({path:resolve(dirname(fileURLToPath(import.meta.url)),'../../../.env')});
+import mongoose from 'mongoose';
+import {demoMystery} from '../data/demoMystery.js';
+import {validateMysteryIntegrity} from '@mystery/shared';
+import {Mystery} from '../models/Mystery.js';
+if(!process.env.MONGODB_URI)throw new Error('MONGODB_URI is required');
+const result=validateMysteryIntegrity(demoMystery);
+if(!result.success)throw new Error(`Demo mystery is invalid: ${result.issues.join('; ')}`);
+await mongoose.connect(process.env.MONGODB_URI);
+await Mystery.updateOne({mysteryId:'demo-case'},{$set:{mysteryId:'demo-case',caseReference:demoMystery.caseReference,data:demoMystery,createdAt:new Date(demoMystery.createdAt)}},{upsert:true});
+await mongoose.disconnect();
+console.log('Demo case seeded.');
